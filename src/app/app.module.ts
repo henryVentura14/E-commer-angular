@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { FormComponent } from './components/form/form.component';
-import { MessageComponent } from './components/message/message.component';
 import { BudgetComponent } from './components/budget/budget.component';
 
 @NgModule({
@@ -12,12 +12,13 @@ import { BudgetComponent } from './components/budget/budget.component';
     AppComponent,
     SpinnerComponent,
     FormComponent,
-    MessageComponent,
     BudgetComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

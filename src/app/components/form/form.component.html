@@ -1,113 +1,65 @@
-    <div class="title-form">
-        <h1>DIRECCIÓN DE ENVÍO</h1>
-    </div>
-    <form class="form">
-        <div class="content-inputs">
-            <div class="input-group">
-                <i class="fas fa-user" ></i>
-                <input
-                    class="input-form"
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Nombre" />
-            </div>
-            <div class="input-group">
-                <i class="fas fa-user" ></i>
-                <input
-                    class="input-form"
-                    type="text"
-                    name="lastName"
-                    id="lastName"
-                    placeholder="Apellidos" />
-            </div>
-            <div class="input-group">
-                <i class="fas fa-envelope" ></i>
-                <input
-                    class="input-form"
-                    type="text"
-                    name="email"
-                    id="email"
-                    placeholder="Correo electrónico" />
-            </div>
-            <div class="input-group">
-                <i class="fas fa-phone-alt" ></i>
-                <input
-                    class="input-form"
-                    type="text"
-                    name="phone"
-                    id="phone"
-                    placeholder="Numero de telefóno" />
-            </div>
-            <div class="input-group">
-                <i class="fas fa-map-marker-alt" ></i>
-                <input
-                    class="input-form"
-                    type="text"
-                    name="zipCode"
-                    id="zipCode"
-                    placeholder="Código postal" />
-            </div>
-            <div class="input-group">
-                <i class="fas fa-map-marker-alt" ></i>
-                <select
-                    class="input-select"
-                    type="text"
-                    name="colonies"
-                    id="colonies"
-                    placeholder="Colonia" >
-                    <option>Colonia</option>
-                </select>
-            </div>
-            <div class="input-group">
-                <i class="fas fa-map-marker-alt" ></i>
-                <input
-                    class="input-form"
-                    type="text"
-                    name="region"
-                    id="region"
-                    placeholder="Estado/Región" />
-            </div>
-            <div class="input-group">
-                <i class="fas fa-map-marker-alt" ></i>
-                <input
-                    class="input-form"
-                    type="text"
-                    name="city"
-                    id="city"
-                    placeholder="Ciudad" />
-            </div>
-            <div class="input-group">
-                <i class="fas fa-map-marker-alt" ></i>
-                <input
-                    class="input-form"
-                    type="text"
-                    name="delegation"
-                    id="delegation"
-                    placeholder="Delegación o municipio" />
-            </div>
-            <div class="input-group">
-                <i class="fas fa-map-marked-alt" ></i>
-                <input
-                    class="input-form"
-                    type="text"
-                    name="street"
-                    id="street"
-                    placeholder="Calle" />
-            </div>
+<div class="title-form">
+	<h1>DIRECCIÓN DE ENVÍO</h1>
+</div>
+<form class="form" [formGroup]="regularForm" #contactForm="ngForm"
+(ngSubmit)="addContact(contactForm)" novalidate>
+	<div class="content-inputs">
+		<div class="input-group">
+			<i class="fas fa-user"></i>
+			<input formControlName="name" required class="input-form" type="text" name="name" id="name" placeholder="Nombre" />
+		</div>
+		<div class="input-group">
+			<i class="fas fa-user"></i>
+			<input formControlName="lastName" class="input-form" type="text" name="lastName" id="lastName" placeholder="Apellidos" />
+		</div>
+		<div class="input-group">
+			<i class="fas fa-envelope"></i>
+			<input formControlName="email" class="input-form" type="text" name="email" id="email" placeholder="Correo electrónico" />
+		</div>
+		<div class="input-group">
+			<i class="fas fa-phone-alt"></i>
+			<input formControlName="phone" class="input-form" type="text" name="phone" id="phone" placeholder="Numero de telefóno" />
+		</div>
+		<div class="input-group">
+			<i class="fas fa-map-marker-alt"></i>
+			<input formControlName="zipCode" class="input-form" type="text" name="zipCode" id="zipCode" placeholder="Código postal" />
+		</div>
+		<div class="input-group">
+			<i class="fas fa-map-marker-alt"></i>
+			<select formControlName="colonies" class="input-select" type="text" name="colonies" id="colonies" placeholder="Colonia">
+				<option>Colonia</option>
+			</select>
+		</div>
+		<div class="input-group">
+			<i class="fas fa-map-marker-alt"></i>
+			<input formControlName="region" class="input-form" type="text" name="region" id="region" placeholder="Estado/Región" />
+		</div>
+		<div class="input-group">
+			<i class="fas fa-map-marker-alt"></i>
+			<input formControlName="city" class="input-form" type="text" name="city" id="city" placeholder="Ciudad" />
+		</div>
+		<div class="input-group">
+			<i class="fas fa-map-marker-alt"></i>
+			<input formControlName="delegation" class="input-form" type="text" name="delegation" id="delegation"
+				placeholder="Delegación o municipio" />
+		</div>
+		<div class="input-group">
+			<i class="fas fa-map-marked-alt"></i>
+			<input formControlName="street" class="input-form" type="text" name="street" id="street" placeholder="Calle" />
+		</div>
 
-            <div class="button-group">
-                <button type="button" class="directions">Libreta de direcciones</button>
-                <input disabled={disabled} class="save" type="submit" value="Guardar" />
-            </div>
-            <div class="checkbox">
-                <input
-                    type="checkbox"
-                    name="active"
-                    id="check"
-                    checked={active}
-                />
-                <label htmlFor="check">utilizar dirección de la facturacion</label>
-            </div>
-        </div>
-    </form>
+		<div class="button-group">
+			<button type="button" class="directions">Libreta de direcciones</button>
+			<input disabled={disabled} class="save" type="submit" value="Guardar" />
+		</div>
+		<div class="checkbox">
+			<input formControlName="active" type="checkbox" name="active" id="check" checked={active} />
+			<label htmlFor="check">utilizar dirección de la facturacion</label>
+		</div>
+
+	</div>
+  <small class="alert alert-danger error" *ngIf="!regularForm.get('name').valid && (regularForm.get('name').dirty || regularForm.get('name').touched)">
+    El campo nombre es obligatorio, no debe poseer numeros</small>
+    <small class="alert alert-danger error" *ngIf="!regularForm.get('lastName').valid && (regularForm.get('lastName').dirty || regularForm.get('lastName').touched)">
+      El campo apellido es obligatorio, no debe poseer numeros</small>
+</form>
