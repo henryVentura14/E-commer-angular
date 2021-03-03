@@ -19,11 +19,18 @@ export class FormComponent implements OnInit {
   @ViewChild('vform') validationForm: FormGroup;
   @ViewChild('f') registerForm: NgForm;
   regularForm: FormGroup;
+  public success: boolean;
+  public error: boolean;
+  public colonies: any;
+
+  public zip: number = 0;
+  public region: any = "";
+  public city: any = "";
+  public delegation: any = "";
 
   constructor(public zipcodesService: ZipcodesService, public contactService: ContactService) { }
 
   ngOnInit(): void {
-    this.getZipcode()
     this.regularForm = new FormGroup({
       'name': new FormControl(null, [Validators.required, ReValidator(/^[a-zA-Z- ]*$/)]),
       'lastName': new FormControl(null, [Validators.required, ReValidator(/^[a-zA-Z- ]*$/)]),
@@ -31,35 +38,65 @@ export class FormComponent implements OnInit {
       'phone': new FormControl(null, [Validators.required, CustomValidators.number]),
       'zipCode': new FormControl(null, [Validators.required, CustomValidators.number]),
       'colonies': new FormControl(null, [Validators.required]),
-      'region': new FormControl(null, [Validators.required]),
-      'city': new FormControl(null, [Validators.required]),
-      'delegation': new FormControl(null, [Validators.required]),
+      'region': new FormControl(null),
+      'city': new FormControl(null),
+      'delegation': new FormControl(null),
       'street': new FormControl(null, [Validators.required]),
       'active': new FormControl(null)
-    }, { updateOn: 'blur' });
+    }, { updateOn: 'change' });
   }
   resetForm(form?: NgForm) {
     if (form) {
       form.reset();
-      // this.contactService.selectedContact = new Contact();
     }
   }
-  addContact(form: NgForm) {
+  addContact(form?: NgForm) {
     if (!this.regularForm.valid) {
       return;
     }
+    form.value.region=this.region.state
+    form.value.delegation=this.delegation.town
+    form.value.city=this.city.city
+
     this.contactService.postContact(form.value)
       .subscribe(
         res => {
-          console.log('success')
+          this.success = true
+          this.error = false
+          setTimeout(() => {
+            this.resetForm()
+            form.reset()
+          }, 500);
+
         }, err => {
-          console.log('error')
+          this.success = false
+          this.error = true
         })
   }
-  getZipcode() {
-    this.zipcodesService.getZipcode(11000)
+  fillInFields(z: any) {
+    if (z.length < 5 || z === "") {
+      this.region = "";
+      this.delegation = "";
+      this.city = "";
+    }
+    if (z.length > 3) {
+      this.getZipcode(z)
+    }
+  }
+  getZipcode(z) {
+    this.zipcodesService.getZipcode(z)
       .subscribe(res => {
         this.zipcodesService.zipcode = res as Zipcode[];
-      })
+        this.colonies = res;
+        this.region = res;
+        this.delegation = res;
+        this.city = res;
+      },
+        err => {
+          this.region = "";
+          this.delegation = "";
+          this.city = "";
+        }
+      )
   }
 }

@@ -12,6 +12,6 @@ export class ContactService {
   constructor(public https: HttpClient) { }
 
   postContact(contact) {
-    return this.https.get('https://blackisp.herokuapp.com/contact', contact);
+    return this.https.post('https://blackisp.herokuapp.com/contact', contact);
   }
 }

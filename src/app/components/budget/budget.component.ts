@@ -32,8 +32,6 @@ export class BudgetComponent implements OnInit {
           price: Math.floor(item.price)
         }));
          this.total = this.list.reduce((prev, next) => prev + next.price, 0);
-         console.log(this.formatCurrency.format(this.total))
-
       })
   }
 }
