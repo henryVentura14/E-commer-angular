@@ -223,6 +223,7 @@ input[type="submit"]:disabled {
     justify-items  : center;
     justify-content: center;
   }
+
   .content-inputs .checkbox .button-group {
     width          : 110%;
     justify-content: space-between;
@@ -230,12 +231,12 @@ input[type="submit"]:disabled {
   }
 
   .input-group {
-    width: 44%;
+    width : 44%;
     margin: 12px;
   }
 
   .input-form {
-    width: 100%;
+    width    : 100%;
     font-size: .8em;
   }
 
@@ -251,11 +252,19 @@ input[type="submit"]:disabled {
   }
 }
 
+@media screen and (max-width:1280px) {
+  .input-group {
+    width : 42%;
+    margin: 12px;
+  }
+}
+
 @media screen and (max-width:1024px) {
   .message {
     justify-items  : center;
     justify-content: center;
   }
+
   .content-inputs {
     width          : 100%;
     justify-content: center;
