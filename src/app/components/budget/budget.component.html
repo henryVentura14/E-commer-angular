@@ -1,0 +1,45 @@
+  <div class="title-budget">
+      <h1>RESUMEN DE LA ORDEN</h1>
+  </div>
+  <div class="sk-circle" *ngIf="productService.product==null">
+    <div class="sk-circle1 sk-child"></div>
+    <div class="sk-circle2 sk-child"></div>
+    <div class="sk-circle3 sk-child"></div>
+    <div class="sk-circle4 sk-child"></div>
+    <div class="sk-circle5 sk-child"></div>
+    <div class="sk-circle6 sk-child"></div>
+    <div class="sk-circle7 sk-child"></div>
+    <div class="sk-circle8 sk-child"></div>
+    <div class="sk-circle9 sk-child"></div>
+    <div class="sk-circle10 sk-child"></div>
+    <div class="sk-circle11 sk-child"></div>
+    <div class="sk-circle12 sk-child"></div>
+</div>
+  <div class="content-item" *ngFor="let x of productService.product">
+    <img src={{x.image}} alt="imagen del producto" />
+    <div class="description">
+      <p>{{x.name}}</p>
+    </div>
+    <div class="price">
+      <span>
+        {{formatCurrency.format(x.price)}}
+      </span>
+    </div>
+  </div>
+  <div class="edit">
+      <button>Editar</button>
+  </div>
+  <div class="subtotal">
+      <span class="top">ENVÍO</span>
+      <span class="top">A calcular</span>
+  </div>
+  <div class="subtotal">
+      <span class="bottom">SUBTOTAL</span>
+      <span class="bottom">{{formatCurrency.format(total)}}</span>
+
+  </div>
+  <div class="total">
+      <span>TOTAL</span>
+      <span>{{formatCurrency.format(total)}}</span>
+
+  </div>

@@ -1,0 +1,162 @@
+* {
+  box-sizing : border-box;
+  padding    : 0;
+  margin     : 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+html {
+  overflow             : auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select  : none;
+  -khtml-user-select   : none;
+  -moz-user-select     : none;
+  -ms-user-select      : none;
+  user-select          : none;
+}
+
+*:focus {
+  outline: 0;
+}
+
+.app {
+  display        : flex;
+  flex-direction : row;
+  width          : 100%;
+  height         : auto;
+  justify-content: space-around;
+  justify-items  : center;
+  align-items    : flex-start;
+  align-content  : center;
+  padding        : 16px;
+  margin-top     : 100px;
+}
+
+.content-budget {
+  width: 28%;
+  height   : auto;
+  border   : solid 1px var(--darkGrey);
+}
+
+.content-form {
+  border: 2px solid var(--darkGrey);
+  width : 68%;
+  height: auto;
+}
+
+/*MEDIA QUERY*/
+@media screen and (max-width:1366px) {
+  .app {
+    margin-top: 16px;
+  }
+  .content-budget {
+    min-width: 30%;
+    height   : auto;
+    border   : solid 1px var(--darkGrey);
+  }
+
+  .content-form {
+    border: 2px solid var(--darkGrey);
+    width : 60%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width:1024px) {
+  .app {
+    margin-top: 16px
+  }
+
+  .content-budget {
+    width          : 35%;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width:768px) {
+
+  .app {
+    margin-top     : 16px;
+    flex-direction : column;
+    justify-content: space-around;
+    justify-items  : center;
+    align-items    : center;
+    align-content  : center;
+    overflow       : visible;
+    padding-bottom : 16px;
+  }
+
+  .price span {
+    font-size: .6em;
+  }
+
+  .description {
+    font-size: .6em;
+  }
+
+  .content-budget {
+    min-width: 90%;
+  }
+
+  .content-form {
+    min-width: 90%;
+    margin-bottom: 16px;
+  }
+}
+
+
+@media screen and (max-width:600px) {
+  .app {
+    margin-top     : 16px;
+    flex-direction : column;
+    justify-content: space-around;
+    justify-items  : center;
+    align-items    : center;
+    align-content  : center;
+    overflow       : visible;
+    padding-bottom : 16px;
+  }
+
+  .content-budget {
+    margin-top     : 16px;
+    width          : 80%;
+    justify-content: center;
+  }
+
+  .price span {
+    font-size: .9em;
+  }
+
+  .description {
+    font-size: .8em;
+  }
+
+}
+
+@media screen and (max-width:480px) {
+  .app {
+    margin-top     : 16px;
+    display: flex;
+    flex-direction : column;
+    justify-content: center;
+    justify-items  : center;
+    align-items    : center;
+    align-content  : center;
+    overflow       : visible;
+    padding-bottom : 16px;
+  }
+  .price span {
+    font-size: .7em;
+  }
+
+  .description {
+    font-size: .6em;
+  }
+
+  .img {
+    max-width: 10%;
+    height   : 60%;
+  }
+}
+
+@media screen and (max-width:320px) {}

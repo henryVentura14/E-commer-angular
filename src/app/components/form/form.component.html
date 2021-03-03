@@ -1,0 +1,105 @@
+<div class="title-form">
+  <h1>DIRECCIÓN DE ENVÍO</h1>
+</div>
+<form class="form" [formGroup]="regularForm" #contactForm="ngForm" (ngSubmit)="addContact(contactForm)" novalidate>
+  <div class="content-inputs">
+    <div class="input-group">
+      <i class="fas fa-user"></i>
+      <input formControlName="name" required class="input-form" type="text" name="name" id="name"
+        placeholder="Nombre" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-user"></i>
+      <input formControlName="lastName" class="input-form" type="text" name="lastName" id="lastName"
+        placeholder="Apellidos" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-envelope"></i>
+      <input formControlName="email" class="input-form" type="text" name="email" id="email"
+        placeholder="Correo electrónico" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-phone-alt"></i>
+      <input formControlName="phone" class="input-form" type="text" name="phone" id="phone"
+        placeholder="Numero de telefóno" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-map-marker-alt"></i>
+      <input formControlName="zipCode" (ngModelChange)="fillInFields($event)" [(ngModel)]="contactForm.zipCode"
+        class="input-form" type="text" name="zipCode" id="zipCode" placeholder="Código postal" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-map-marker-alt"></i>
+      <input *ngIf="!colonies" placeholder="Colonia" id="colonies" type="text" name="colonies" class="input-form" />
+      <select *ngIf="colonies" formControlName="colonies" class="input-select" name="colonies" id="colonies"
+        placeholder="Colonia">
+        <option disabled selected value="Colinia">Colonia</option>
+        <option *ngFor="let x of colonies.colonies" [value]="x">{{x}}</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <i class="fas fa-map-marker-alt"></i>
+      <input formControlName="region" [value]="region.state" class="input-form" type="text" name="region" id="region"
+        placeholder="Estado/Región" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-map-marker-alt"></i>
+      <input formControlName="city" [value]="city.city" class="input-form" type="text" name="city" id="city"
+        placeholder="Ciudad" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-map-marker-alt"></i>
+      <input formControlName="delegation" [value]="delegation.town" class="input-form" type="text" name="delegation"
+        id="delegation" placeholder="Delegación o municipio" />
+    </div>
+    <div class="input-group">
+      <i class="fas fa-map-marked-alt"></i>
+      <input formControlName="street" class="input-form" type="text" name="street" id="street" placeholder="Calle" />
+    </div>
+
+    <div class="button-group">
+      <button type="button" class="directions">Libreta de direcciones</button>
+      <input [disabled]="!this.contactForm.valid" class="save" type="submit" value="Guardar" />
+    </div>
+    <div class="checkbox">
+      <input formControlName="active" type="checkbox" name="active" id="check" checked={active} />
+      <label htmlFor="check">utilizar dirección de la facturacion</label>
+    </div>
+  </div>
+  <div class="message">
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('name').valid && (regularForm.get('name').dirty || regularForm.get('name').touched)">
+      El campo nombre es obligatorio, no debe poseer numeros</small>
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('lastName').valid && (regularForm.get('lastName').dirty || regularForm.get('lastName').touched)">
+      El campo apellido es obligatorio, no debe poseer numeros</small>
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('email').valid && (regularForm.get('email').dirty || regularForm.get('email').touched)">
+      El campo correo es obligatorio, introduzca un correo valido</small>
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('phone').valid && (regularForm.get('phone').dirty || regularForm.get('phone').touched)">
+      El campo telefono es obligatorio, no debe poseer letras</small>
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('zipCode').valid && (regularForm.get('zipCode').dirty || regularForm.get('zipCode').touched)">
+      El campo codigo postal es obligatorio, no debe poseer letras</small>
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('colonies').valid && (regularForm.get('colonies').dirty || regularForm.get('colonies').touched)">
+      Seleccione una colonia</small>
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('region').valid && (regularForm.get('region').dirty || regularForm.get('region').touched)">
+      El campo region es obligatorio</small>
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('city').valid && (regularForm.get('city').dirty || regularForm.get('city').touched)">
+      El campo ciudad es obligatorio</small>
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('delegation').valid && (regularForm.get('delegation').dirty || regularForm.get('delegation').touched)">
+      El campo delegacion es obligatorio</small>
+    <small class="alert alert-danger error"
+      *ngIf="!regularForm.get('street').valid && (regularForm.get('street').dirty || regularForm.get('street').touched)">
+      El campo calle es obligatorio</small>
+    <small class="alert alert-success erro" *ngIf="contactForm.valid && success">
+      El contacto ha sido guardado</small>
+    <small class="alert alert-warning error" *ngIf="contactForm.valid && error">
+      Hubo un error al de crear el contacto</small>
+  </div>
+</form>
