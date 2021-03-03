@@ -1,0 +1,33 @@
+  <div class="title-budget">
+      <h1>RESUMEN DE LA ORDEN</h1>
+  </div>
+  <div class="content-item" *ngFor="let x of productService.product">
+    <img src={{x.image}} alt="imagen del producto" />
+    <div class="description">
+      <p>{{x.name}}</p>
+    </div>
+    <div class="price">
+      <span>
+        {{x.price}}
+      </span>
+    </div>
+  </div>
+  <div class="edit">
+      <button>Editar</button>
+  </div>
+  <div class="subtotal">
+      <span class="top">ENVÍO</span>
+      <span class="top">A calcular</span>
+  </div>
+  <div class="subtotal">
+      <span class="bottom">SUBTOTAL</span>
+      <span class="bottom">formatCurrency.formattotal</span>
+      <!-- <span class="bottom">"formatCurrency.format(total)"</span> -->
+
+  </div>
+  <div class="total">
+      <span>TOTAL</span>
+      <span>formatCurrency.formattotal</span>
+      <!-- <span>formatCurrency.format(total)</span> -->
+
+  </div>

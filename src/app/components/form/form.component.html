@@ -1,0 +1,113 @@
+    <div class="title-form">
+        <h1>DIRECCIÓN DE ENVÍO</h1>
+    </div>
+    <form class="form">
+        <div class="content-inputs">
+            <div class="input-group">
+                <i class="fas fa-user" ></i>
+                <input
+                    class="input-form"
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Nombre" />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user" ></i>
+                <input
+                    class="input-form"
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    placeholder="Apellidos" />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope" ></i>
+                <input
+                    class="input-form"
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="Correo electrónico" />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-phone-alt" ></i>
+                <input
+                    class="input-form"
+                    type="text"
+                    name="phone"
+                    id="phone"
+                    placeholder="Numero de telefóno" />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marker-alt" ></i>
+                <input
+                    class="input-form"
+                    type="text"
+                    name="zipCode"
+                    id="zipCode"
+                    placeholder="Código postal" />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marker-alt" ></i>
+                <select
+                    class="input-select"
+                    type="text"
+                    name="colonies"
+                    id="colonies"
+                    placeholder="Colonia" >
+                    <option>Colonia</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marker-alt" ></i>
+                <input
+                    class="input-form"
+                    type="text"
+                    name="region"
+                    id="region"
+                    placeholder="Estado/Región" />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marker-alt" ></i>
+                <input
+                    class="input-form"
+                    type="text"
+                    name="city"
+                    id="city"
+                    placeholder="Ciudad" />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marker-alt" ></i>
+                <input
+                    class="input-form"
+                    type="text"
+                    name="delegation"
+                    id="delegation"
+                    placeholder="Delegación o municipio" />
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marked-alt" ></i>
+                <input
+                    class="input-form"
+                    type="text"
+                    name="street"
+                    id="street"
+                    placeholder="Calle" />
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="directions">Libreta de direcciones</button>
+                <input disabled={disabled} class="save" type="submit" value="Guardar" />
+            </div>
+            <div class="checkbox">
+                <input
+                    type="checkbox"
+                    name="active"
+                    id="check"
+                    checked={active}
+                />
+                <label htmlFor="check">utilizar dirección de la facturacion</label>
+            </div>
+        </div>
+    </form>
